@@ -13165,9 +13165,54 @@ $$\prob{A \cup B \cup C} = \prob{A} + \prob{B} + \prob{C} - \prob{A, B} - \prob{
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Maths-Primer">Maths Primer<a class="anchor-link" href="#Maths-Primer">&#182;</a></h2><h3 id="Quadratic-Formula">Quadratic Formula<a class="anchor-link" href="#Quadratic-Formula">&#182;</a></h3><p>Suppose we have an equation with variable $x$ and $a, b, c \in\R$</p>
+<h2 id="Maths-Primer">Maths Primer<a class="anchor-link" href="#Maths-Primer">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Quadratic-Formula">Quadratic Formula<a class="anchor-link" href="#Quadratic-Formula">&#182;</a></h3><p>Suppose we have an equation with variable $x$ and $a, b, c \in\R$</p>
 $$ax^2 + bx + c$$<p>Then we have:</p>
 $$ x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Geometric-Sum">Geometric Sum<a class="anchor-link" href="#Geometric-Sum">&#182;</a></h3><p>Suppose we have $0&lt;a&lt;1$ then:</p>
+$$\sum_{r=0}^{n}a^r = \frac{1-a^{n+1}}{1-a}$$$$\sum_{r=0}^{\infty}a^r = \frac{1}{1-a}$$<h4 id="Proof">Proof<a class="anchor-link" href="#Proof">&#182;</a></h4><p>Let $S = \sum_{r=0}^{n}a^r$, then:</p>
+$$\begin{eqnarray}
+    S - aS 
+    &amp;=&amp; \sum_{r=0}^{n}a^r - a\sum_{r=0}^{n}a^r \\
+    &amp;=&amp; \sum_{r=0}^{n}a^r - \sum_{r=0}^{n}a^{r+1} \\ 
+    &amp;=&amp; \sum_{r=0}^{n}a^r - \sum_{r=1}^{n+1}a^{r} \\ 
+    &amp;=&amp; 1 - a^{n+1}
+\end{eqnarray}$$<p>Therefore rearranging the above equation we get:</p>
+$$ S = \frac{1-a^{n+1}}{1-a} $$<p>Finally, taking $n\rightarrow \infty$, we have the second result.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Geometric-Sum-with-Index">Geometric Sum with Index<a class="anchor-link" href="#Geometric-Sum-with-Index">&#182;</a></h3><p>Suppose we have $0&lt;a&lt;1$ then:</p>
+$$\sum_{r=0}^{n}ra^r = \frac{1-a^{n+1}}{\brac{1-a}^2} - \frac{a^{n+1}\brac{n+1}}{1-a}$$$$\sum_{r=0}^{\infty}ra^r = \frac{1}{\brac{1-a}^2}$$<h4 id="Proof">Proof<a class="anchor-link" href="#Proof">&#182;</a></h4><p>Let $S = \sum_{r=0}^{n}ra^r$, then:</p>
+$$\begin{eqnarray}
+    S - aS 
+    &amp;=&amp; \sum_{r=0}^{n}ra^r - a\sum_{r=0}^{n}ra^r \\
+    &amp;=&amp; \sum_{r=0}^{n}ra^r - \sum_{r=0}^{n}ra^{r+1} \\ 
+    &amp;=&amp; \sum_{r=0}^{n}ra^r - \sum_{r=1}^{n+1}\brac{r-1}a^{r} \\ 
+    &amp;=&amp; \sum_{r=0}^{n}ra^r - \sum_{r=1}^{n+1}ra^{r} + \sum_{r=1}^{n+1}a^{r}\\
+    &amp;=&amp; 0 - \brac{n+1}a^{n+1} + \frac{1-a^{n+1}}{1-a}
+\end{eqnarray}$$<p>Therefore rearranging the above equation we get:</p>
+$$\begin{eqnarray}
+S 
+&amp;=&amp; \frac{1-a^{n+1}}{\brac{1-a}^2} - \frac{a^{n+1}\brac{n+1}}{1-a}
+\end{eqnarray}$$<p>Finally, taking $n\rightarrow \infty$, we have the second result.</p>
+
 </div>
 </div>
 </div>
@@ -13542,19 +13587,48 @@ $$\begin{eqnarray}
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Solution-4">Solution 4<a class="anchor-link" href="#Solution-4">&#182;</a></h2><ul>
-<li>Let $D$ be a random variable with the sample space $\curlbrac{1,2,3,4,5,6}$ such that:</li>
+<li>Let $D_t$ be a random variable for all $t\in\N$ with the sample space $\curlbrac{1,2,3,4,5,6}$ where for all $t\in\N$:</li>
 </ul>
-$$ \prob{D=n} = \frac{1}{6} \text{ for all } n \in\curlbrac{1,2,3,4,5,6} $$<ul>
-<li>Suppose $D_i$ have the same distribution as $D$ for all $i\in\N$</li>
-<li>We define a random variable $n_6$ which is the average number of throws to get a 6 then:</li>
+$$ \prob{D_t=d} = \frac{1}{6} \text{ for all } d \in\curlbrac{1,2,3,4,5,6}$$<ul>
+<li>Let $\tau$ be the stopping time such that:</li>
+</ul>
+$$\tau = \inf\curlbrac{t:D_t = 6}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Method-1">Method 1<a class="anchor-link" href="#Method-1">&#182;</a></h3>$$\begin{eqnarray}
+    \E{\tau} 
+    &amp;=&amp; \E{\tau\cap\brac{\curlbrac{D_1=6}\cup\curlbrac{D_1\neq6}}} \\
+    &amp;=&amp; \E{\tau|D_1=6}\cdot\prob{D_1=6} + \brac{\E{\tau|D_1\neq 6}+1}\cdot\prob{D_1\neq 6} \\
+    &amp;=&amp; 1\cdot\frac{1}{6} + \E{\tau}\cdot\frac{5}{6} + 1\cdot\frac{5}{6}\\
+    &amp;\Updownarrow&amp; \\
+    \frac{1}{6} \E{\tau} &amp;=&amp; 1\\
+    &amp;\Updownarrow&amp; \\
+    \E{\tau} &amp;=&amp; 6
+\end{eqnarray}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Method-2">Method 2<a class="anchor-link" href="#Method-2">&#182;</a></h3><ul>
+<li>Therefore we want to find $\E{\tau}$:</li>
 </ul>
 $$\begin{eqnarray}
-    \E{n_6} &amp;=&amp; \E{n_6|D_1=6}\cdot\prob{D_1=6} + \E{n_6|D_1\neq 6}\cdot\prob{D_1\neq 6} \\
-    &amp;=&amp; 1\cdot\frac{1}{6} + \E{n_6}\cdot\frac{5}{6} \\
-    &amp;\Updownarrow&amp; \\
-    \frac{1}{6} \E{n_6} &amp;=&amp; \frac{1}{6}\\
-    &amp;\Updownarrow&amp; \\
-    \E{n_6} &amp;=&amp; 1
+    \E{\tau}
+    &amp;=&amp; \sum_{t=1}^{\infty}t\cdot\prob{\tau = t} \\
+    &amp;=&amp; \sum_{t=1}^{\infty}\brac{t\cdot\prob{D_t=6}\cdot\prod_{s&lt;t}\prob{D_s\neq6}} \\
+    &amp;=&amp; \sum_{t=1}^{\infty}t\cdot\frac{1}{6}\cdot\brac{\frac{5}{6}}^{t-1} \\
+    &amp;=&amp; \frac{1}{6}\brac{\sum_{t=0}^{\infty}(t+1)\cdot\brac{\frac{5}{6}}^{t}} \\
+    &amp;=&amp; \frac{1}{6}\brac{\sum_{t=0}^{\infty}\brac{\frac{5}{6}}^{t} + \sum_{t=0}^{\infty}t\cdot\brac{\frac{5}{6}}^{t}} \\
+    %\text{Using [link](#Geometric-Sum) and [link](#Geometric-Sum-With-Index)}
+    &amp;=&amp; \frac{1}{6}\brac{\frac{1}{1-\frac{5}{6}} + \frac{1}{\brac{1-\frac{5}{6}}^2}} \\
+    &amp;=&amp; \frac{1}{6}\brac{6 + 36} \\
+    &amp;=&amp; 6
 \end{eqnarray}$$
 </div>
 </div>
