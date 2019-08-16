@@ -13380,7 +13380,7 @@ $$ n_R =  \frac{\brac{4n+1}\pm\sqrt{32n^2 + 1}}{2} $$<p>We will get that $n=3$ s
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x7f53948f8940&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x7ff4c61b5b70&gt;</pre>
 </div>
 
 </div>
@@ -13587,7 +13587,7 @@ $$\begin{eqnarray}
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Solution-4">Solution 4<a class="anchor-link" href="#Solution-4">&#182;</a></h2><ul>
-<li>Let $D_t$ be a random variable for all $t\in\N$ with the sample space $\curlbrac{1,2,3,4,5,6}$ where for all $t\in\N$:</li>
+<li>Let $D_t$ be an independent identically distributed random variable for all $t\in\N$ with the sample space $\curlbrac{1,2,3,4,5,6}$ where for all $t\in\N$:</li>
 </ul>
 $$ \prob{D_t=d} = \frac{1}{6} \text{ for all } d \in\curlbrac{1,2,3,4,5,6}$$<ul>
 <li>Let $\tau$ be the stopping time such that:</li>
@@ -13601,13 +13601,36 @@ $$\tau = \inf\curlbrac{t:D_t = 6}$$
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Method-1">Method 1<a class="anchor-link" href="#Method-1">&#182;</a></h3>$$\begin{eqnarray}
     \E{\tau} 
-    &amp;=&amp; \E{\tau\cap\brac{\curlbrac{D_1=6}\cup\curlbrac{D_1\neq6}}} \\
     &amp;=&amp; \E{\tau|D_1=6}\cdot\prob{D_1=6} + \brac{\E{\tau|D_1\neq 6}+1}\cdot\prob{D_1\neq 6} \\
     &amp;=&amp; 1\cdot\frac{1}{6} + \E{\tau}\cdot\frac{5}{6} + 1\cdot\frac{5}{6}\\
     &amp;\Updownarrow&amp; \\
     \frac{1}{6} \E{\tau} &amp;=&amp; 1\\
     &amp;\Updownarrow&amp; \\
     \E{\tau} &amp;=&amp; 6
+\end{eqnarray}$$<p>Let us look at why we can do the above in more detail:</p>
+$$\begin{eqnarray}
+    \E{\tau}
+    &amp;=&amp; \sum_{t=1}^{\infty}t\cdot\prob{\tau=t} \\
+    &amp;=&amp; \sum_{t=1}^{\infty}t\cdot\prob{\curlbrac{\tau=t}\cap\curlbrac{D_1=6\cup D_1\neq6}} \\
+    &amp;=&amp; \sum_{t=1}^{\infty}t\cdot\prob{\curlbrac{\tau=t, D_1=6}\cup\curlbrac{\tau=t, D_1\neq6}} \\
+    &amp;=&amp; \sum_{t=1}^{\infty}t\cdot\brac{\prob{\tau=t, D_1=6} + \prob{\tau=t, D_1\neq6}} \\
+    &amp;=&amp; \sum_{t=1}^{\infty}t\cdot\brac{\prob{\tau=t| D_1=6}\cdot\prob{D_1=6} + \prob{\tau=t| D_1\neq6}\cdot \prob{D_1\neq 6}} \\
+    &amp;=&amp; \E{\tau|D_1=6}\cdot\prob{D_1=6} + \underbrace{\brac{\sum_{t=1}^{\infty}t\cdot\prob{\tau=t| D_1\neq6}}}_\brac{*}\cdot\prob{D_1\neq 6} \\
+    &amp;=&amp; \E{\tau|D_1=6}\cdot\prob{D_1=6} + \brac{\E{\tau} + 1}\cdot\prob{D_1\neq6}
+\end{eqnarray}$$<p>Finally, let us have a closer look at $\brac{*}$:</p>
+$$\begin{eqnarray}
+    \brac{*}
+    &amp;=&amp; \sum_{t=1}^{\infty}t\cdot\prob{\tau=t| D_1\neq6}\\
+    &amp;=&amp; 1\cdot\underbrace{\prob{\tau=1|D_1\neq6}}_{=0}+\sum_{t=2}^{\infty}t\cdot\prob{\tau=t| D_1\neq6} \\
+    &amp;=&amp; \sum_{t=1}^{\infty}\brac{t+1}\cdot\prob{\tau=t+1| D_1\neq6} \\
+    &amp;=&amp; \sum_{t=1}^{\infty}\brac{t+1}\cdot\frac{\prob{\tau=t+1, D_1\neq6}}{\prob{D_1\neq 6}} \\
+    &amp;=&amp; \sum_{t=1}^{\infty}\brac{t+1}\cdot\frac{\prob{D_1\neq6, D_2\neq6,\dots,D_{t}\neq 6, D_{t+1}=6}}{\prob{D_1\neq 6}} \\
+    \text{(Independence)} &amp;=&amp; \sum_{t=1}^{\infty}\brac{t+1}\cdot\frac{\prob{D_1\neq6}\cdot \prob{D_2\neq6}\cdots\prob{D_{t}\neq 6}\cdot\prob{D_{t+1}=6}}{\prob{D_1\neq 6}} \\
+    &amp;=&amp; \sum_{t=1}^{\infty}\brac{t+1}\cdot \prob{D_2\neq6}\cdots\prob{D_{t}\neq 6}\cdot\prob{D_{t+1}=6} \\
+    \text{(Identical distribution)}&amp;=&amp; \sum_{t=1}^{\infty}\brac{t+1}\cdot \prob{D_1\neq6}\cdots\prob{D_{t-1}\neq 6}\cdot\prob{D_{t}=6} \\
+    &amp;=&amp; \sum_{t=1}^{\infty}\brac{t+1}\cdot\prob{\tau=t} \\
+    &amp;=&amp; \brac{\sum_{t=1}^{\infty}t\cdot\prob{\tau=t} + \sum_{t=1}^{\infty}\prob{\tau=t}} \\
+    &amp;=&amp; \brac{\E{\tau} + 1} \\
 \end{eqnarray}$$
 </div>
 </div>
@@ -13630,6 +13653,40 @@ $$\begin{eqnarray}
     &amp;=&amp; \frac{1}{6}\brac{6 + 36} \\
     &amp;=&amp; 6
 \end{eqnarray}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Question-5---Coin-In-Square">Question 5 - Coin In Square<a class="anchor-link" href="#Question-5---Coin-In-Square">&#182;</a></h2><p>In a common carnival game a player tosses a penny from a distance of about 5 feet onto the surface of a table ruled in 1-inch squares. If the penny (0.75 inch in diameter) falls entirely inside a square, the player receives 5 cents but does not get his penny back; otherwise loses his penny. If the penny lands on the table, what is his chance to win?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Solution-5">Solution 5<a class="anchor-link" href="#Solution-5">&#182;</a></h2><ul>
+<li>We have to assume some kind of distribution for the coin landing on the table</li>
+<li>We will assume that the center of the coin is uniformly distributed on the table when it lands</li>
+<li>We will always assume that the coin will always land on the table instead of missing the table completely</li>
+<li>To start with, let us assume that there is only one square on the table<ul>
+<li>In this case, for the coin to land entirely inside the square:<ul>
+<li>The center of the coin has to be perpendicular distance of 0.375 inches away from any side of the square</li>
+<li>This is the same as the center of the coin cannot be futher away than 0.125 (=0.5 - 0.375) in a horizontal or vertical distance from the center of the square</li>
+<li>In other words the center of the coin has to be in the smaller square of side 0.25 inches in the middle of the big square with side 1 inch</li>
+</ul>
+</li>
+<li>The probability of this happening when the distribution is uniform is the area of the smaller square over the area of the bigger square:
+$$\prob{\text{Coin landing entirely in the Square}} = \frac{0.25^2}{1^2} = 0.225$$</li>
+</ul>
+</li>
+<li>Now let us assume that there are $n$ squares on the table then we can still use the same logic as for one square:
+$$\prob{\text{Coin landing entirely in the Square}} = \frac{n\cdot0.25^2}{n\cdot1^2} = 0.225$$</li>
+<li>Therefore the probability of you winning is 0.225</li>
+</ul>
+
 </div>
 </div>
 </div>
