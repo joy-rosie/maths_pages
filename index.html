@@ -13076,7 +13076,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -13833,7 +13833,7 @@ $$\begin{eqnarray}
     &amp;=&amp; \E{\sum_{i=1}^{36} X_i} + 20\times\brac{1 - \brac{\frac{37}{38}}^{36}} - 20\times\brac{\frac{37}{38}}^{36} \\
     &amp;=&amp; \sum_{i=1}^{36}\E{X_i} + 20\times\brac{1 - 2\times\brac{\frac{37}{38}}^{36}} \\
     &amp;=&amp; 36\times-\frac{2}{38} + 20\times\brac{1 - 2\times\brac{\frac{37}{38}}^{36}} \\
-    &amp;=&amp; 20 - \frac{2\times36}{38} -40\times\brac{\frac{37}{38}}^{36} \\
+    %&amp;=&amp; 20 - \frac{2\times36}{38} -40\times\brac{\frac{37}{38}}^{36} \\
 \end{eqnarray}$$<p>We can see below that the expectation is positive.</p>
 
 </div>
@@ -13887,6 +13887,71 @@ Overall expectation: 2.79
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Question-8---Perfect-Bridge-Hand">Question 8 - Perfect Bridge Hand<a class="anchor-link" href="#Question-8---Perfect-Bridge-Hand">&#182;</a></h2><p>We often read of someone who has been dealt 13 spades at bridge. With a well-shuffled pack of cards, what is the chance that you are dealt a perfect hand (13 of one suit)? (Bridge is played with an ordinary pack of 52 cards, 13 in each of 4 suits, and 4 players is dealt 13.)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Solution-8">Solution 8<a class="anchor-link" href="#Solution-8">&#182;</a></h2><ul>
+<li>Suppose we have random variables $C_i$ for $1\leq i\leq 52$ denoting the $i$-th dealt card from a shuffled pack of cards</li>
+<li>The outcome space for $C_1$ is $A = \curlbrac{1,2,\dots, 52}$ denoting the all 52 cards, for $C_2$ is $A\setminus \curlbrac{C_1}$, for $C_i$ is $A\setminus \bigcup_{j=1}^{i-1}C_i$</li>
+<li>Suppose $S: A\rightarrow \curlbrac{1,2,3,4}$ is a funcion which maps a card to its suit</li>
+<li>For a well shuffled deck, it should not matter if we deal $13$ cards in one go to player $1$ then $2$ then $3$ then $4$ or if we deal one card to players $1, 2, 3, 4$ then the second card and so on...?</li>
+<li>Therefore we will assume we deal $13$ cards at once to each player, then:</li>
+</ul>
+$$\begin{eqnarray}
+\prob{\text{Pefect Hand}}
+&amp;=&amp; \prob{\bigcup_{s=1}^4\bigcap_{i=1}^{13}S\brac{C_i} = s} \\
+\text{(Disjoint sets)} &amp;=&amp; \sum_{s=1}^4\prob{\bigcap_{i=1}^{13}S\brac{C_i} = s} \\
+&amp;=&amp; \sum_{s=1}^4\prob{S\brac{C_1}=s}\cdot \prob{\bigcap_{i=2}^{13}\curlbrac{S\brac{C_i}= s}|S\brac{C_1}=s} \\
+&amp;=&amp; \sum_{s=1}^4\prob{S\brac{C_1}=s} \cdot \prob{S\brac{C_2}=s|S\brac{C_1}=s} \cdot \prob{\bigcap_{i=3}^{13}\curlbrac{S\brac{C_i}= s}|S\brac{C_1}=s, S\brac{C_2}=s} \\
+&amp;=&amp; \sum_{s=1}^4\prod_{i=1}^{13}\prob{S\brac{C_i} = s|\bigcap_{j=1}^{i-1}S\brac{C_j} = s} \\
+&amp;=&amp; \sum_{s=1}^4\frac{13}{52}\times\frac{12}{51}\times\cdots\times\frac{1}{40} \\
+&amp;=&amp; 4\times \frac{13!39!}{52!} \\
+&amp;=&amp; \frac{12!39!}{51!}
+\end{eqnarray}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">perfect_hand</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">39</span><span class="p">)</span> <span class="o">/</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of a perfect hand: </span><span class="se">\n</span><span class="si">{perfect_hand_any_suit:.20f}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Probability of a perfect hand: 
+0.00000000000629907809
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     </div>
   </div>
