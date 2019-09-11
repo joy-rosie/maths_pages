@@ -13076,7 +13076,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -13155,6 +13155,7 @@ $$\prob{A|B} = \frac{\prob{A,B}}{\prob{B}}$$</li>
 <li>$\prob{A\cup B} = \prob{A} + \prob{B} - \prob{A,B}$</li>
 <li><strong>Indendence</strong> Suppose $A$ and $B$ are independent then $\prob{A|B} = \prob{A}$ and using Bayes Formula:
 $$\prob{A,B} = \prob{A}\cdot \prob{B}$$</li>
+<li>Add $\prob{X} = \sum_{y\in\Omega}\prob{X,Y=y}$</li>
 <li><strong>Inclusion-Exclusion</strong>
 $$\prob{A \cup B \cup C} = \prob{A} + \prob{B} + \prob{C} - \prob{A, B} - \prob{B, C} - \prob{A, C} + \prob{A, B, C}$$</li>
 <li><strong>Expectation</strong><ul>
@@ -13162,6 +13163,7 @@ $$\prob{A \cup B \cup C} = \prob{A} + \prob{B} + \prob{C} - \prob{A, B} - \prob{
 $$\E{X} = \sum_{x\in\Omega}x\cdot\prob{X=x}$$</li>
 </ul>
 </li>
+<li>Add $\E{X} = \sum_{y\in\Omega}\E{X|Y=y}\cdot\prob{Y=y}$</li>
 </ul>
 
 </div>
@@ -13385,7 +13387,7 @@ $$ n_R =  \frac{\brac{4n+1}\pm\sqrt{32n^2 + 1}}{2} $$<p>We will get that $n=3$ s
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x7f491de5bc50&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x7fa2ca09a550&gt;</pre>
 </div>
 
 </div>
@@ -13841,7 +13843,7 @@ $$\begin{eqnarray}
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Payoff from a single game of roulette: {- 36 * 2 / 38:.2f}&#39;</span><span class="p">)</span>
@@ -13922,11 +13924,11 @@ $$\begin{eqnarray}
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">perfect_hand</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">39</span><span class="p">)</span> <span class="o">/</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of a perfect hand: </span><span class="se">\n</span><span class="si">{perfect_hand_any_suit:.20f}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of a perfect hand: </span><span class="se">\n</span><span class="si">{perfect_hand:.20f}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13977,7 +13979,7 @@ $$ \prob{D_i = j} = \frac{1}{6}, \text{for } i\in\curlbrac{1,2} \text{ and } j\i
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[90]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="mi">1</span>
@@ -13989,9 +13991,10 @@ $$ \prob{D_i = j} = \frac{1}{6}, \text{for } i\in\curlbrac{1,2} \text{ and } j\i
     
 <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;probability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> 
+<span class="n">count_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+<span class="n">count_df</span><span class="p">[</span><span class="s1">&#39;probability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_df</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">count_df</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">count_df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14125,11 +14128,6 @@ $$ \prob{D_i = j} = \frac{1}{6}, \text{for } i\in\curlbrac{1,2} \text{ and } j\i
       <th>count</th>
       <th>probability</th>
     </tr>
-    <tr>
-      <th>value</th>
-      <th></th>
-      <th></th>
-    </tr>
   </thead>
   <tbody>
     <tr>
@@ -14203,12 +14201,157 @@ $$ \prob{D_i = j} = \frac{1}{6}, \text{for } i\in\curlbrac{1,2} \text{ and } j\i
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>We now have the distribution for $S$ as above, suppose we have $S_i$ for $i\geq 1$ where $S_i$ is independently identically distributed each with the same distribution with $S$</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Method-1">Method 1<a class="anchor-link" href="#Method-1">&#182;</a></h3><ul>
+<li>Let us define $P = \curlbrac{4,5,6,8,9,10}$</li>
 <li>We want to now try to work out the probability of winning:</li>
 </ul>
 $$\begin{eqnarray}
     \prob{\text{Win}} 
-    &amp;=&amp; \prob{S_1\in\curlbrac{7, 11}\cup \brac{S_1\in\curlbrac{4, 5, 6, 8, 9, 10, 11}\cap_{i &gt; 1} S_i \neq 7}}\\
-\end{eqnarray}$$<p>-</p>
+    &amp;=&amp; \prob{S_1\in\curlbrac{7, 11}\cup \brac{S_1\in P\bigcap\bigcup_{i=2}^{\infty}\cap_{j = 2}^{i-1} S_j \notin\curlbrac{S_1, 7}\cap \curlbrac{S_{i}=S_1}}}\\
+    &amp;=&amp; \prob{S_1\in\curlbrac{7, 11}} + \prob{S_1\in P\bigcap\bigcup_{i=2}^{\infty}\cap_{j = 2}^{i-1} S_j \notin\curlbrac{S_1, 7}\cap \curlbrac{S_{i}=S_1}}\\
+    &amp;=&amp; \prob{S_1\in\curlbrac{7, 11}} + \sum_{s\in P}\prob{\curlbrac{S_1 = s}\bigcap\bigcup_{i=2}^{\infty}\cap_{j = 2}^{i-1} S_j \notin\curlbrac{s, 7}\cap \curlbrac{S_{i}=s}}\\
+    &amp;=&amp; \prob{S_1\in\curlbrac{7, 11}} + \sum_{s\in P}\prob{S_1=s}\cdot\prob{\bigcup_{i=2}^{\infty}\cap_{j = 2}^{i-1} S_j \notin\curlbrac{s, 7}\cap \curlbrac{S_{i}=s}| S_1 = s}\\
+    &amp;=&amp; \prob{S_1\in\curlbrac{7, 11}} + \sum_{s\in P}\prob{S=s}\cdot\prob{\bigcup_{i=2}^{\infty}\cap_{j = 2}^{i-1} S \notin\curlbrac{s, 7}}\cdot\prob{S=s}\\
+    &amp;=&amp; \prob{S_1\in\curlbrac{7, 11}} + \sum_{s\in P}\prob{S=s}^2\cdot\sum_{i=2}^{\infty}\prob{\cap_{j = 2}^{i-1} S \notin\curlbrac{s, 7}}\\
+    &amp;=&amp; \prob{S_1\in\curlbrac{7, 11}} + \sum_{s\in P}\prob{S=s}^2\cdot\sum_{i=2}^{\infty}\prod_{j=2}^{i-1}\prob{S \notin\curlbrac{s, 7}}\\
+    &amp;=&amp; \prob{S_1\in\curlbrac{7, 11}} + \sum_{s\in P}\prob{S=s}^2\cdot\sum_{i=2}^{\infty}\prob{S \notin\curlbrac{s, 7}}^{i-2}\\
+    &amp;=&amp; \prob{S_1\in\curlbrac{7, 11}} + \sum_{s\in P}\prob{S=s}^2\cdot\sum_{i=0}^{\infty}\prob{S \notin\curlbrac{s, 7}}^{i}\\
+    &amp;=&amp; \prob{S_1\in\curlbrac{7, 11}} + \sum_{s\in P}\prob{S=s}^2\cdot\frac{1}{1-\prob{S \notin\curlbrac{s, 7}}}\\
+    &amp;=&amp; \frac{6 + 2}{36} + 2\cdot\brac{\brac{\frac{3}{36}}^2\cdot\frac{1}{1-\frac{27}{36}} + \brac{\frac{4}{36}}^2\cdot\frac{1}{1-\frac{26}{36}} + \brac{\frac{5}{36}}^2\cdot\frac{1}{1-\frac{25}{36}}}\\
+    &amp;=&amp; \frac{8}{36} + 2\cdot\brac{\brac{\frac{3}{36}}^2\cdot\frac{36}{9} + \brac{\frac{4}{36}}^2\cdot\frac{36}{10} + \brac{\frac{5}{36}}^2\cdot\frac{36}{11}}\\
+    &amp;=&amp; \frac{8}{36} + 2\cdot\brac{\frac{9}{36^2}\cdot\frac{36}{9} + \frac{16}{36^2}\cdot\frac{36}{10} + \frac{25}{36^2}\cdot\frac{36}{11}}\\
+    &amp;=&amp; \frac{8}{36} + 2\cdot\brac{\frac{1}{36} + \frac{16}{36\cdot 10} + \frac{25}{36\cdot 11}}\\
+    &amp;=&amp; \frac{8}{36} + \frac{2}{36} + \frac{32}{36\cdot 10} + \frac{50}{36\cdot 11}\\
+    &amp;=&amp; \frac{8}{36} + \frac{2}{36} + \frac{16}{36\cdot 5} + \frac{50}{36\cdot 11}\\
+    &amp;=&amp; \frac{8\cdot 5\cdot 11 + 2\cdot 5\cdot 11 + 16\cdot 11 + 50\cdot 4}{36\cdot 5\cdot 11}\\
+    &amp;=&amp; \frac{440 + 110 + 176 + 200}{1980}\\
+    &amp;=&amp; \frac{926}{1980}\\
+    &amp;=&amp; \frac{244}{495}
+\end{eqnarray}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Method-2">Method 2<a class="anchor-link" href="#Method-2">&#182;</a></h3>$$\begin{eqnarray}
+\prob{\text{Win}} 
+&amp;=&amp; 1 - \prob{\text{Lose}}\\
+&amp;=&amp; 1 - \prob{S_1\in\curlbrac{2, 3, 12}\cup\brac{S_1\notin\curlbrac{2, 3, 12}\cap\brac{\bigcup_{i\geq2}\bigcap_{j&lt;i}\curlbrac{S_j\neq 7}\cap \curlbrac{S_i = 7}}}}\\
+&amp;=&amp; 1 - \prob{S_1\in\curlbrac{2, 3, 12}} + \prob{S_1\notin\curlbrac{2, 3, 12}}\cdot\prob{\bigcup_{i\geq2}\bigcap_{j&lt;i}\curlbrac{S_j\neq 7}\cap \curlbrac{S_i = 7}}\\
+&amp;=&amp; 1 - \prob{S\in\curlbrac{2, 3, 12}} + \prob{S\notin\curlbrac{2, 3, 12}}\cdot\prob{\bigcup_{i\geq2}\bigcap_{j&lt;i}\curlbrac{S\neq 7}}\cdot\prob{S=7}\\
+&amp;=&amp; 1 - \prob{S\in\curlbrac{2, 3, 12}} + \prob{S\notin\curlbrac{2, 3, 12}}\cdot\prob{S=7}\cdot\sum_{i=2}^\infty\prod_{j=2}^{i-1}\prob{S\neq 7}\\
+&amp;=&amp; 1 - \prob{S\in\curlbrac{2, 3, 12}} + \prob{S\notin\curlbrac{2, 3, 12}}\cdot\prob{S=7}\cdot\sum_{i=2}^\infty\prob{S\neq 7}^{i-2}\\
+&amp;=&amp; 1 - \prob{S\in\curlbrac{2, 3, 12}} + \prob{S\notin\curlbrac{2, 3, 12}}\cdot\prob{S=7}\cdot\sum_{i=0}^\infty\prob{S\neq 7}^{i}\\
+&amp;=&amp; 1 - \prob{S\in\curlbrac{2, 3, 12}} + \prob{S\notin\curlbrac{2, 3, 12}}\cdot\prob{S=7}\cdot\frac{1}{1-\prob{S\neq 7}}\\
+&amp;=&amp; 1 - \frac{4}{36}+ \frac{32}{36}
+\end{eqnarray}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of winning at craps: {244 / 495:.4f}&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Probability of winning at craps: 0.4929
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Note-9">Note 9<a class="anchor-link" href="#Note-9">&#182;</a></h3><ul>
+<li>It might be easier to do this question by calculating the probability of losing and subtracting that from one as after the first throw you would just need to check if its 7 or not rather than needing to go into specific cases</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Question-10---An-Experiment-in-Personal-Taste-for-Money">Question 10 - An Experiment in Personal Taste for Money<a class="anchor-link" href="#Question-10---An-Experiment-in-Personal-Taste-for-Money">&#182;</a></h2><p>a) An urn contains 10 black balls and 10 white balls, identical except for color. You choose "black" or "white". One ball is drawn at random, and if its color matches your choice, you get $10, otherwise nothing. Write down the maximum amount you are willing to pay to play the game. The game will be play just once.</p>
+<p>b) A friend of yours has available many black and many white balls, and he puts black and white balls into the urn to suit himself. You choose "black" or "white". A ball is drawn randomly from his urn. Write down the maximum amount you are willing to pay to play this game. The game will be played just once.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Solution-10">Solution 10<a class="anchor-link" href="#Solution-10">&#182;</a></h2><ul>
+<li>To setup the problem, we will denote the random variable $B$ denoting the ball drawn with the outcome space $b, w$ for black and white ball</li>
+<li>We also use the variable $C$ which denotes the choice we make</li>
+</ul>
+<p>a)</p>
+<ul>
+<li>We would like to calculate the expected payoff from the game. We have the following:
+$$\begin{eqnarray}
+  \E{\text{Payoff}|C=b} 
+  &amp;=&amp; 10\cdot\prob{B=b} + 0\cdot\prob{B=w}\\
+  &amp;=&amp; 10\cdot\frac{10}{20}\\
+  &amp;=&amp; 5
+\end{eqnarray}$$</li>
+<li>Similarly $\E{\text{Payoff}|C=w} = 5$</li>
+</ul>
+<p>b)</p>
+<ul>
+<li>Let us denote $n_b$ and $n_w$ which are the theoretical number of black balls and white balls respectively. Then we have the following:
+$$\begin{eqnarray}
+  \E{\text{Payoff}|C=b} 
+  &amp;=&amp; 10\cdot\prob{B=b} + 0\cdot\prob{B=w}\\
+  &amp;=&amp; 10\cdot\frac{n_b}{n_b + n_w}
+\end{eqnarray}$$</li>
+<li>Similarly $\E{\text{Payoff}|C=b} = 10\cdot\frac{n_w}{n_b + n_w}$</li>
+<li>Suppose now that $C$ is a random variable where $\prob{C=b} = \prob{C=w} = \frac{1}{2}$, then we have:
+$$\begin{eqnarray}
+\E{\text{Payoff}}
+&amp;=&amp; \E{\text{Payoff}|C=b}\cdot\prob{C=b} + \E{\text{Payoff}|C=w}\cdot\prob{C=w}\\
+&amp;=&amp; \frac{1}{2}\brac{10\cdot\frac{n_b}{n_b + n_w} + 10\cdot\frac{n_w}{n_b+n_w}}\\
+&amp;=&amp; 5
+\end{eqnarray}$$</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Note-10">Note 10<a class="anchor-link" href="#Note-10">&#182;</a></h3><ul>
+<li>The idea here is that it doesn't matter what you are willing to pay for either (a) or (b) but whatever those values are, they should be equal as both (a) and (b) have the same payoff even if you don't know how many black and white balls there are in the (b) case</li>
+</ul>
 
 </div>
 </div>
