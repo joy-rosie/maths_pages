@@ -13094,6 +13094,16 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Unfinished-Solutions:">Unfinished Solutions:<a class="anchor-link" href="#Unfinished-Solutions:">&#182;</a></h3><ul>
+<li><a href="#Solution-15">15</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Latex Commands
 $$
 %\usepackage{amsmath}
@@ -13164,7 +13174,14 @@ $$\prob{A \cup B \cup C} = \prob{A} + \prob{B} + \prob{C} - \prob{A, B} - \prob{
 $$\E{X} = \sum_{x\in\Omega}x\cdot\prob{X=x}$$</li>
 </ul>
 </li>
-<li>Add $\E{X} = \sum_{y\in\Omega}\E{X|Y=y}\cdot\prob{Y=y}$</li>
+<li><p>Add $\E{X} = \sum_{y\in\Omega}\E{X|Y=y}\cdot\prob{Y=y}$</p>
+</li>
+<li><p><strong>Binomial Distribution</strong></p>
+<ul>
+<li>Suppose that $X$ is distributed with $\text{Binomial}\brac{n,p}$ then we have:
+$$\prob{X=k} = {n\choose k}\cdot p^k\cdot\brac{1-p}^{n-k}$$</li>
+</ul>
+</li>
 </ul>
 
 </div>
@@ -13388,7 +13405,7 @@ $$ n_R =  \frac{\brac{4n+1}\pm\sqrt{32n^2 + 1}}{2} $$<p>We will get that $n=3$ s
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x7feddeaeb518&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x7fdcf9084a58&gt;</pre>
 </div>
 
 </div>
@@ -14563,7 +14580,7 @@ $$\begin{eqnarray}
 $$R = \brac{B,B,B,B,B,B,B,\underbrace{B,M},M,M,M,M,M,M}$$<ul>
 <li>In the best base scenario bachelors and models sit alternatively and we have $N=14$:</li>
 </ul>
-$$R = \brac{\rlap{$\phantom{\underbrace{B,M}}$},\overbrace{M,B},\underbrace{B,M},\underbrace{B,M},\underbrace{B,M},\underbrace{B,M},\underbrace{B,M},\underbrace{B,M},\overbrace{B}}$$<ul>
+$$R = \brac{\rlap{\underbrace{\phantom{B,M}}}B,\rlap{\overbrace{\phantom{M,B}}}M,\rlap{\underbrace{\phantom{B,M}}}B,\rlap{\overbrace{\phantom{M,B}}}M,\rlap{\underbrace{\phantom{B,M}}}B,\rlap{\overbrace{\phantom{M,B}}}M,\rlap{\underbrace{\phantom{B,M}}}B,\rlap{\overbrace{\phantom{M,B}}}M,\rlap{\underbrace{\phantom{B,M}}}B,\rlap{\overbrace{\phantom{M,B}}}M,\rlap{\underbrace{\phantom{B,M}}}B,\rlap{\overbrace{\phantom{M,B}}}M,\rlap{\underbrace{\phantom{B,M}}}B,\rlap{\overbrace{\phantom{M,B}}}M,B}$$<ul>
 <li>There are $15!$ possible combinations of the theatre row</li>
 <li>Let us start with a theater row with only 3 seats, we have the following combinations:<ul>
 <li>$\brac{B,B,M}$</li>
@@ -14580,7 +14597,7 @@ $$R = \brac{\rlap{$\phantom{\underbrace{B,M}}$},\overbrace{M,B},\underbrace{B,M}
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Question-16">Question 16<a class="anchor-link" href="#Question-16">&#182;</a></h2><p>A tennis tournament has 8 players. The number a player draws from a hat decides their first-round rung in the tournament ladder.</p>
+<h2 id="Question-16---Will-Second-Best-be-Runner-Up?">Question 16 - Will Second-Best be Runner-Up?<a class="anchor-link" href="#Question-16---Will-Second-Best-be-Runner-Up?">&#182;</a></h2><p>A tennis tournament has 8 players. The number a player draws from a hat decides their first-round rung in the tournament ladder.</p>
 <p>Suppose that the best player always defeats the next best and the latter always defeats all the rest. The loser of the finals gets the runner-up cup. What is the chance that the second-best player wins the runner-up cup</p>
 
 </div>
@@ -14607,6 +14624,7 @@ $$\begin{eqnarray}
 &amp;=&amp; \prob{\curlbrac{P_1\in\curlbrac{1,2,3,4}\cap P_2\in\curlbrac{5,6,7,8}}\cup\curlbrac{P_1\in\curlbrac{5,6,7,8}\cap P_2\in\curlbrac{1,2,3,4}}}\\
 &amp;=&amp; \prob{\curlbrac{P_1 = p \text{ for some } p\in\curlbrac{1,\dots,8}}\cap\curlbrac{P_2\in E_p}}\\
 &amp;=&amp; \prob{P_1\in\curlbrac{1,\dots,8}}\cdot\prob{P_2\in E_p|P_1=p}\\
+&amp;=&amp; 1\cdot\frac{\abs{E_p}}{\abs{\curlbrac{1,2,3,4,5,6,7,8}\backslash\curlbrac{p}}}\\
 &amp;=&amp; 1\cdot\frac{4}{7}
 % &amp;=&amp; \prob{\curlbrac{P_1=1,P_2=5}\cup\curlbrac{P_1=1,P_2=6}\cup\curlbrac{P_1=1,P_2=7}\cup\curlbrac{P_1=1,P_2=8}} + \cdots\\
 % &amp;&amp; \cdots + \prob{\curlbrac{P_1=7,P_2=1}\cup\curlbrac{P_1=7,P_2=2}\cup\curlbrac{P_1=8,P_2=1}\cup\curlbrac{P_1=8,P_2=2}}\\
@@ -14617,6 +14635,136 @@ $$\begin{eqnarray}
 \end{eqnarray}$$
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Note-16">Note 16<a class="anchor-link" href="#Note-16">&#182;</a></h3><ul>
+<li>This can be generalised to a tournament with $2^n$ players then the probability would be:</li>
+</ul>
+$$ \prob{P_2 \text{ is runner up}} = \frac{2^{n-1}}{2^n -1} $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Question-17---Twin-Knights">Question 17 - Twin Knights<a class="anchor-link" href="#Question-17---Twin-Knights">&#182;</a></h2><p>a) Suppose King Arthur holds a jousting tournament where the jousts are in pairs as in a tennis tournament. See <a href="#Question-16---Will-Second-Best-be-Runner-Up?">Problem 16</a> for tournament ladder. The 8 knights in the tournament are evenly matched and they include the twin knights Balin and Balan. What is the chance that the twins meet in a match during the tournament?</p>
+<p>b) Replace 8 by 2$^\text{n}$ in the above problem. Now what is the chance they meet?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Solution-17">Solution 17<a class="anchor-link" href="#Solution-17">&#182;</a></h2><ul>
+<li>Suppose that $D$ is the random variable denoting the depth of the tree they meet at with the outcome space $\curlbrac{1,2,3}$ where if $D=1$ then Balin and Balan meet in the first game</li>
+<li>Let $P_1, P_2$ be the random variables denoting the starting positions of Balin and Balan respectively with the outcome space $\curlbrac{1,\dots,8}$</li>
+<li>Let $Q$ be the random variable with the outcome space $\curlbrac{1,2,3}$ if they are in the same smallest $2^{1-Q}$ part of the initial ladder. For example if $P_1=1$ and $P_2=2$ then $Q=3$ as they are in the same quarter of the intial ladder $\brac{2^{-2}}$ however if $P_1=1$ and $P_2=3$ then $Q=2$ as they are in the same half of the intial ladder $\brac{2^{-1}}$</li>
+<li>Finally the last random variables we define are $B_{i,j}$ for $i=1,2$ and $j=1,2,3$ with outcome space $\curlbrac{W,L}$ denoting if Balin $\brac{i=1}$ and Balan $\brac{i=2}$ have won or lost respectively at the $j$-th depth</li>
+</ul>
+$$\begin{eqnarray}
+\prob{\curlbrac{D=1}\cup\curlbrac{D=2}\cup\curlbrac{D=3}}
+&amp;=&amp; \prob{\brac{\curlbrac{D=1}\cup\curlbrac{D=2}\cup\curlbrac{D=3}}\cap\brac{\curlbrac{Q=3}\cup\curlbrac{Q=2}\cup\curlbrac{Q=1}}}\\
+&amp;=&amp; \prob{D=1,Q=3} + \prob{D=2,Q=2} + \prob{D=3,Q=1}\\
+&amp;=&amp; \prob{D=1|Q=3}\cdot\prob{Q=3} + \prob{D=2|Q=2}\cdot\prob{Q=2} + \prob{D=3|Q=1}\cdot\prob{Q=1}\\
+&amp;=&amp; \sum_{d=1}^3\prob{\bigcap_{i\leq2, j &lt; d}\curlbrac{B_{i,j} = W}|Q=4-d}\cdot\prob{Q=4-d}\\
+&amp;=&amp; \frac{1}{2}^0\cdot\frac{1}{7} + \frac{1}{2}^2\cdot\frac{2}{7} + \frac{1}{2}^4\cdot\frac{4}{7}\\
+&amp;=&amp; \frac{4}{28} + \frac{2}{28} + \frac{1}{28}\\
+&amp;=&amp; \frac{1}{4}
+\end{eqnarray}$$<ul>
+<li>For (b), we can generalise all of the above to have $2^n$ participants for some $n\in\N$.</li>
+<li>$D$ now has the outcome space $\curlbrac{1,\dots,n}$</li>
+<li>$P_1,P_2$ have the outcome space $\curlbrac{1,\dots,2^n}$</li>
+<li>$Q$ has the outcome space $\curlbrac{1,\dots,n}$ representing if $P_1$ and $P_2$ share the same $2^{1-Q}$ part of the initial ladder</li>
+<li>Therefore:</li>
+</ul>
+$$\begin{eqnarray}
+\prob{\bigcup_{d\leq n} \curlbrac{D=d}}
+&amp;=&amp; \sum_{d=1}^n\prob{D=d,Q=n+1-d}\\
+&amp;=&amp; \sum_{d=1}^n\prob{\bigcap_{i\leq 2, j &lt; d}\curlbrac{B_{i,j} = W}|Q=n+1-d}\cdot\prob{Q=n+1-d}\\
+&amp;=&amp; \sum_{d=1}^n\prob{\bigcap_{j &lt; d}\curlbrac{B_{1,j} = W}|Q=n+1-d}\cdot\prob{\bigcap_{j &lt; d}\curlbrac{B_{2,j} = W}|Q=n+1-d}\cdot\prob{Q=n+1-d}\\
+&amp;=&amp; \sum_{d=1}^n\brac{\frac{1}{2}}^{d-1}\cdot\brac{\frac{1}{2}}^{d-1}\cdot\prob{Q=n+1-d}\\
+&amp;=&amp; \sum_{d=1}^n\brac{\frac{1}{4}}^{d-1}\cdot\frac{2^{d-1}}{2^n-1}\\
+&amp;=&amp; \frac{1}{2^n-1}\cdot\sum_{d=1}^n\frac{1}{2^{d-1}}\\
+&amp;=&amp; \frac{1}{2^n-1}\cdot\sum_{d=0}^{n-1}\brac{\frac{1}{2}}^d\\
+&amp;=&amp; \frac{1}{2^n-1}\cdot\frac{1-\brac{\frac{1}{2}}^n}{1-\frac{1}{2}}\\
+&amp;=&amp; \frac{1}{2^n-1}\cdot\frac{2^n-1}{2^n-2^{n-1}}\\
+&amp;=&amp; \frac{1}{2^n-2^{n-1}}\\
+&amp;=&amp; \frac{1}{2^{n-1}\brac{2-1}}\\
+&amp;=&amp; \frac{1}{2^{n-1}}\\
+\end{eqnarray}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Note-17">Note 17<a class="anchor-link" href="#Note-17">&#182;</a></h3><ul>
+<li>This was a particularly difficult question to frame mathematically</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Question-18---An-Even-Split-at-Coin-Tossing">Question 18 - An Even Split at Coin Tossing<a class="anchor-link" href="#Question-18---An-Even-Split-at-Coin-Tossing">&#182;</a></h2><p>When 100 coins are tossed, what is the probability that exactly 50 are heads?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Solution-18">Solution 18<a class="anchor-link" href="#Solution-18">&#182;</a></h2><ul>
+<li>Suppose $C$ is a Bernoulli random variable such that $\prob{C=1} = \prob{C=0} = 0.5$ where $1$ represents heads and $0$ represents tails</li>
+<li>Let $C_i$ for $i\leq 100$ be independently, identically distributed with the same distribution as $C$</li>
+<li>Then $X = \sum_{i=1}^100 C_i$ is a binomial random variable with $n=100$ and $p=0.5$</li>
+<li>We would like to find $\prob{X = 50}$ to get the probability of landing exactly $k=50$ heads:</li>
+</ul>
+$$ \begin{eqnarray}
+\prob{X = 50}
+&amp;=&amp; {n \choose k}\cdot p^{n}\cdot\brac{1-p}^{n-k}\\
+&amp;=&amp; {100 \choose 50}\cdot 0.5^{50} \cdot 0.5^{100-50}\\
+&amp;=&amp; {100 \choose 50}\cdot 0.5^{100}
+\end{eqnarray}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prob</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">**</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of landing exactly 50 heads when tossing 100 coins is </span><span class="si">{prob:.4f}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Probability of landing exactly 50 heads when tossing 100 coins is 0.0796
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     </div>
   </div>
