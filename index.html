@@ -13405,7 +13405,7 @@ $$ n_R =  \frac{\brac{4n+1}\pm\sqrt{32n^2 + 1}}{2} $$<p>We will get that $n=3$ s
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.legend.Legend at 0x7fdcf9084a58&gt;</pre>
+<pre>&lt;matplotlib.legend.Legend at 0x7f2a45c2a550&gt;</pre>
 </div>
 
 </div>
@@ -14736,7 +14736,7 @@ $$ \begin{eqnarray}
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">prob</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">**</span> <span class="mi">100</span>
@@ -14816,7 +14816,7 @@ $$\prob{D=0} = \frac{5}{6}, \quad \prob{D=1} = \frac{1}{6}$$<ul>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of rolling at least 1 six with 6 die: {1 - (5 / 6) ** 6:.4f}&#39;</span><span class="p">)</span>
@@ -14870,7 +14870,49 @@ Probability of rolling at least 3 sixes with 18 die: 0.5973
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Solution-20">Solution 20<a class="anchor-link" href="#Solution-20">&#182;</a></h2>
+<h2 id="Solution-20">Solution 20<a class="anchor-link" href="#Solution-20">&#182;</a></h2><ul>
+<li>The goal here is to maximize the chances of survival. We will also make an assumption that everyone else is trying to do the same</li>
+<li>Let us denote a random variable $L$ which denotes the last person standing in this three way duel with the outcome space $A, B, C$</li>
+<li>We now denote variable $S_i$ for $i\in\N$ which will be a tuplet holding the information about the $i-th$ shooting where the first and second element denotes the shooter and shootee, for example $\brac{A,B}$ tells us that $A$ shot at $B$</li>
+<li>We also denote the random variable $O_i$ for $i\in\N$ with the outcome space $\curlbrac{0,1}$ which toutcome of $S_i$ where a miss is $0$ and a hit $1$</li>
+<li>We want to find which probability if greater between $\prob{L=A|S_1=\brac{A,B}}$ and $\prob{L=A|S_1=\brac{A,C}}$</li>
+<li>One thing to note about $S_2$ where $B$ is still alive is that $S_2 = \brac{B,C}$ always as $B$ wants to maximise their probability of survival which is either $0.5$ for $S_2 = \brac{B,A}$ or $0.7$ for $S_2 = \brac{B,C}$</li>
+<li>We can start with the probability for when $S_1=\brac{A,C}$:</li>
+</ul>
+$$\begin{eqnarray}
+    \prob{L=A|S_1=\brac{A,C}}
+    &amp;=&amp; \prob{L=A|O_1=1,S_1=\brac{A,C}}\cdot\prob{O_1=1|S_1=\brac{A,C}} + \cdots\\
+    &amp;&amp;\cdots + \prob{L=A|O_1=0,S_1=\brac{A,B}}\cdot\prob{O_1=0|S_1=\brac{A,C}}\\
+    &amp;=&amp; \underbrace{\prob{L=A|O_2=1,S_2=\brac{B,A},O_1=1,S_1=\brac{A,C}}}_{=0 \text{ as } \prob{O_2=1|S_2=\brac{B,A}} = 1}\cdot\prob{O_1=1|S_1=\brac{A,C}}\cdot\prob{O_2=1|S_2=\brac{B,A}} + \cdots\\
+    &amp;&amp; \cdots + \prob{L=A|O_2=1,S_2=\brac{B,C},O_1=0,S_1=\brac{A,C}}\cdot\prob{O_1=0|S_1=\brac{A,C}}\cdot\prob{O_2=1|S_2=\brac{B,C}}\\
+    &amp;=&amp; \prob{L=A|O_3=1,S_3=\brac{A,B},O_2=1,S_2=\brac{B,C},O_1=0,S_1=\brac{A,C}}\times\cdots\\
+    &amp;&amp;\cdots\times\prob{O_1=0|S_1=\brac{A,C}}\cdot\prob{O_2=1|S_2=\brac{B,C}}\cdot\prob{O_3=1|S_3=\brac{A,B}}\\
+    &amp;=&amp; 1\times 0.7 \times 1 \times 0.3\\
+    &amp;=&amp; \frac{21}{100}
+    &amp;=&amp; 0.21
+\end{eqnarray}$$<ul>
+<li>Now, we look at the probability for when $S_2=\brac{A,B}$:</li>
+</ul>
+$$\begin{eqnarray}
+    \prob{L=A|S_1=\brac{A,B}}
+    &amp;=&amp; \prob{L=A|O_1=1,S_1=\brac{A,B}}\cdot\prob{O_1=1|S_1=\brac{A,B}} + \cdots\\ 
+    &amp;&amp; \cdots + \prob{L=A|O_1=0,S_1=\brac{A,B}}\cdot\prob{O_1=0|S_1=\brac{A,B}}\\
+    &amp;=&amp; \prob{L=A|O_2=0,S_2=\brac{C,A},O_1=1,S_1=\brac{A,B}}\cdot\prob{O_1=1|S_1=\brac{A,B}}\cdot\prob{O_2=0|S_2=\brac{C,A}} + \cdots\\
+    &amp;&amp; \cdots + \prob{L=A|O_3=1,S_3=\brac{A,B},O_2=1,S_2=\brac{B,C},O_1=1,S_1=\brac{A,B}}\times\cdots\\
+    &amp;&amp; \cdots\times \prob{O_1=0,S_1=\brac{A,B}}\cdot\prob{O_2=1,S_2=\brac{B,C}}\cdot \prob{O_3=1,S_3=\brac{A,B}}\\
+    &amp;=&amp; \prob{L=A|\dots}\cdot\prob{O_1=1|S_1=\brac{A,B}}\cdot\prob{O_2=0|S=\brac{C,A}}\cdots\times\\
+    &amp;&amp; \cdots \times \sum_{n=0}^{\infty}\prob{O_{2n+3}=1|S_{2n+3}=\brac{A,C}}\cdot\prod_{i=1}^{n}\prob{O_{2i+1}=0|S_{2i+1}=\brac{A,C}}\cdot\prob{O_{2\brac{i+1}}=0|S_{2\brac{i+1}}=\brac{C,A}} + \cdots\\
+    &amp;&amp; \cdots + 1\times 0.7 \times 1 \times 0.3\\
+    &amp;=&amp; 1\times 0.3\times 0.5\times\sum_{n=0}^{\infty}0.3\times\brac{0.5\times0.7}^i + 0.21\\
+    &amp;=&amp; 0.3\times0.5\times0.3\sum_{n=0}^{\infty}\brac{0.35}^i + 0.21\\
+    &amp;=&amp; 0.045\times\frac{1}{1-0.35} + 0.21\\
+    &amp;=&amp; \frac{0.045}{0.65} + 0.21\\
+    &amp;=&amp; \frac{363}{1300}
+    &amp;\approx&amp; 0.2792
+\end{eqnarray}$$<ul>
+<li>Therefore $A$ should shoot at $B$ for the best change for survival</li>
+</ul>
+
 </div>
 </div>
 </div>
