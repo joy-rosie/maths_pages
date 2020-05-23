@@ -13876,11 +13876,11 @@ $$\begin{eqnarray}
 <div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Payoff from a single game of roulette: {- 36 * 2 / 38:.2f}&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Payoff from a single game of roulette: </span><span class="si">{</span><span class="o">-</span> <span class="mi">36</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">38</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">lose_bet_probability</span> <span class="o">=</span> <span class="p">(</span><span class="mi">37</span> <span class="o">/</span> <span class="mi">38</span><span class="p">)</span> <span class="o">**</span> <span class="mi">36</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of losing the bet: </span><span class="si">{lose_bet_probability:.2f}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Expectation of bet: {20 * (1 - lose_bet_probability) - 20 * lose_bet_probability:.2f}&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Overall expectation: {20 - 2 * 36 / 38 - 40 * (37/38) ** 36:.2f}&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Probability of losing the bet: </span><span class="si">{</span><span class="n">lose_bet_probability</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expectation of bet: </span><span class="si">{</span><span class="mi">20</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">lose_bet_probability</span><span class="p">)</span> <span class="o">-</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">lose_bet_probability</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Overall expectation: </span><span class="si">{</span><span class="mi">20</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">36</span> <span class="o">/</span> <span class="mi">38</span> <span class="o">-</span> <span class="mi">40</span> <span class="o">*</span> <span class="p">(</span><span class="mi">37</span><span class="o">/</span><span class="mi">38</span><span class="p">)</span> <span class="o">**</span> <span class="mi">36</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13958,7 +13958,7 @@ $$\begin{eqnarray}
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">perfect_hand</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">39</span><span class="p">)</span> <span class="o">/</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of a perfect hand: </span><span class="se">\n</span><span class="si">{perfect_hand:.20f}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Probability of a perfect hand: </span><span class="se">\n</span><span class="si">{</span><span class="n">perfect_hand</span><span class="si">:</span><span class="s1">.20f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14292,7 +14292,7 @@ $$\begin{eqnarray}
 <div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of winning at craps: {244 / 495:.4f}&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Probability of winning at craps: </span><span class="si">{</span><span class="mi">244</span> <span class="o">/</span> <span class="mi">495</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14536,7 +14536,7 @@ $$\begin{eqnarray}
 <div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Average number of boxes to receive the prize: {137/12:.2f}&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Average number of boxes to receive the prize: </span><span class="si">{</span><span class="mi">137</span><span class="o">/</span><span class="mi">12</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14752,7 +14752,7 @@ $$ \begin{eqnarray}
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">prob</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">**</span> <span class="mi">100</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of landing exactly 50 heads when tossing 100 coins is </span><span class="si">{prob:.4f}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Probability of landing exactly 50 heads when tossing 100 coins is </span><span class="si">{</span><span class="n">prob</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14831,9 +14831,9 @@ $$\prob{D=0} = \frac{5}{6}, \quad \prob{D=1} = \frac{1}{6}$$<ul>
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of rolling at least 1 six with 6 die: {1 - (5 / 6) ** 6:.4f}&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of rolling at least 2 sixes with 12 die: {1 - (1 / 6) ** 12 * (5 ** 12 + 12 * 5 ** 11):.4f}&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Probability of rolling at least 3 sixes with 18 die: {1 - (1 / 6) ** 18 * (5 ** 18 + 18 * 5 ** 17 + 153 * 5 ** 16):.4f}&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Probability of rolling at least 1 six with 6 die: </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">5</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span> <span class="o">**</span> <span class="mi">6</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Probability of rolling at least 2 sixes with 12 die: </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span> <span class="o">**</span> <span class="mi">12</span> <span class="o">*</span> <span class="p">(</span><span class="mi">5</span> <span class="o">**</span> <span class="mi">12</span> <span class="o">+</span> <span class="mi">12</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">**</span> <span class="mi">11</span><span class="p">)</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Probability of rolling at least 3 sixes with 18 die: </span><span class="si">{</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span> <span class="o">**</span> <span class="mi">18</span> <span class="o">*</span> <span class="p">(</span><span class="mi">5</span> <span class="o">**</span> <span class="mi">18</span> <span class="o">+</span> <span class="mi">18</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">**</span> <span class="mi">17</span> <span class="o">+</span> <span class="mi">153</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">**</span> <span class="mi">16</span><span class="p">)</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
